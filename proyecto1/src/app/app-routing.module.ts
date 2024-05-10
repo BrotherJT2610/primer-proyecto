@@ -9,7 +9,8 @@ const routes: Routes = [
   //loadChildren: indica que habra una ruta fija
   //()=>import: funcion flecha que importa desde la ruta
   //.then: Funcion asincronica del tipo PROMESA
-  {path:"",loadChildren:()=>import('./modules/inicio/inicio.module').then(m=>m.InicioModule)}
+  {path:"",loadChildren:()=>import('./modules/inicio/inicio.module').then(m=>m.InicioModule)},
+  {path:"",loadChildren:()=>import('./modules/producto/producto.module').then(m=>m.ProductoModule)}
 ];
 
 @NgModule({
