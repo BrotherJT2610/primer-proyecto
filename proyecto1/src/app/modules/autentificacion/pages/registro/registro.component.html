@@ -7,36 +7,50 @@
         <!--nombre de usuario-->
         <mat-form-field appearance="fill">
             <mat-label>Ingrese su nombre de usuario</mat-label>
-            <input matInput placeholder="Placeholder">
+            <input [(ngModel)]="usuarios.nombre" matInput placeholder="Placeholder">
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
         <!--apellido del usuario-->
         <mat-form-field appearance="fill">
             <mat-label>Ingrese su Apellido</mat-label>
-            <input matInput placeholder="Placeholder" required>
+            <input [(ngModel)]="usuarios.apellido" matInput placeholder="Placeholder" required>
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
         <!--email del usuario-->
         <mat-form-field appearance="fill">
             <mat-label>Correo electronico</mat-label>
-            <input matInput placeholder="Placeholder" required>
+            <input [(ngModel)]="usuarios.email" matInput placeholder="Placeholder" required>
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label>Enter your password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" #input minlength="6" required>
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-
-            <mat-hint align="start" >minimo:6/{{input.value.length}}</mat-hint>
-
+            <mat-label>seleccione un rol</mat-label>
+            <mat-select [(ngModel)]="usuarios.rol" required="">
+                <mat-option value="admin">administrador</mat-option>
+                <mat-option value="vis">visitante</mat-option>
+            </mat-select>
         </mat-form-field>
 
-        <button class="boton" >Enviar</button>
+        <div>
+
+            <!--contraseña de usuario-->
+
+            <mat-form-field>
+                <mat-label>Enter your password</mat-label>
+                <input [(ngModel)]="usuarios.password" matInput [type]="hide ? 'password' : 'text'" #input minlength="6"
+                    required>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+
+                <mat-hint align="start">minimo:6/{{input.value.length}}</mat-hint>
+
+            </mat-form-field>
+
+            <button class="boton"  (click)="registrar()">registrar </button  >
+
+        </div>
     </div>
-</div>

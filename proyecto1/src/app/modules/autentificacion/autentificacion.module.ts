@@ -8,6 +8,8 @@ import { InicioSesionComponent } from './pages/inicio-sesion/inicio-sesion.compo
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,13 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   imports: [
     CommonModule,
     AutentificacionRoutingModule,
+    //MATERIAL
     MatIconModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSelectModule,
+    //ANGULAR
+    FormsModule
   ],
   exports:[
     RegistroComponent,
