@@ -16,12 +16,23 @@ import { CardComponent } from './components/card/card.component';
     Apartado1Component,
     Apartado2Component,
     Apartado3Component,
-    CardSouvenirsComponent,
-    CardComponent
+    CardComponent,
+    CardSouvenirsComponent
+    
   ],
   imports: [
     CommonModule,
-    ProductoRoutingModule
+    ProductoRoutingModule,
+    
+  ],
+
+  exports: [
+    ProductoComponent,
+    Apartado1Component,
+    Apartado2Component,
+    Apartado3Component,
+    CardComponent,
+    CardSouvenirsComponent
   ]
 })
 export class ProductoModule { }

@@ -64,7 +64,7 @@ export class TableComponent {
           text: "Ha agregado un nuevo producto con éxito!",
           icon: "success"
         });
-        this.producto.reset();
+        this.producto.reset(); //Vaciar inputs
       })
       .catch(error => {
         Swal.fire({
@@ -72,7 +72,7 @@ export class TableComponent {
           text: "Hubo un problema al agregar un nuevo producto",
           icon: "error"
         });
-        //alert("Hubo un problema al agregar un nuevo producto :(");
+        this.producto.reset(); //Vaciar inputs
       })
     }
   }
