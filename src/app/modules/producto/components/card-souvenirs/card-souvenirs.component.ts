@@ -20,12 +20,14 @@ export class CardSouvenirsComponent {
   ngOnInit(): void{
     this.servicioCrud.obtenerProducto().subscribe(producto => {
       this.coleccionProductos = producto;
+      
+      this.mostrarProductoSouvenirs()
     })
   }
 
   mostrarProductoSouvenirs(){
     this.coleccionProductos.forEach(producto => {
-      if(producto.categoria === "souvenirs"){
+      if(producto.categoria === "apartado-1"){
         this.coleccionSouvenirs.push(producto);
       }
     })
