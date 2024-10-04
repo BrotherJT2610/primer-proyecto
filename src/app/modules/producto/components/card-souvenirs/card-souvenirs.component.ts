@@ -7,34 +7,47 @@ import { CrudService } from 'src/app/modules/admin/services/crud.service';
   styleUrls: ['./card-souvenirs.component.css']
 })
 export class CardSouvenirsComponent {
-  coleccionProductos: Producto[] = [];
+//definimos coleccion local de productos
+coleccionProductos: Producto[] = [];
 
-  coleccionSouvenirs: Producto[] = [];
+// Colección de sólo productos de categoría "souvenirs"
+coleccionSouvenirs: Producto[] = [];
 
-  productoseleccionado!: Producto;
+//variable local para obtener producto seleccionado
+productoSeleccionado!: Producto;
+//variable para manejar el estado de un modal
+modalVisible: boolean = false;
 
-  modalVisible: boolean = false;
+constructor(public servicioCrud: CrudService) { }
 
-  constructor(public servicioCrud: CrudService){}
+ngOnInit(): void {
+ this.servicioCrud.obtenerProducto().subscribe(producto => {
+   this.coleccionProductos = producto;
 
-  ngOnInit(): void{
-    this.servicioCrud.obtenerProducto().subscribe(producto => {
-      this.coleccionProductos = producto;
-      
-      this.mostrarProductoSouvenirs()
-    })
-  }
+   this.mostrarProductoSouvenirs();
+ })
+}
 
-  mostrarProductoSouvenirs(){
-    this.coleccionProductos.forEach(producto => {
-      if(producto.categoria === "apartado-1"){
-        this.coleccionSouvenirs.push(producto);
-      }
-    })
-  }
+// Función para filtrar los productos que sean del tipo "souvenirs"
+mostrarProductoSouvenirs(){
+ // forEach: itera la colección
+ this.coleccionProductos.forEach(producto => {
+   // Si la categoría del producto es igual a "souvenirs", se enviará a la 
+   // colección de souvenirs específicada
 
-  mostrarVer(info: Producto){
-    this.modalVisible = true;
-    this.productoseleccionado = info;
-  }
+   if(producto.categoria === "apartado-1"){ 
+     // .push: sube o agrega un item a una colección
+     this.coleccionSouvenirs.push(producto);
+   }
+ })
+}
+
+//funcion para modal que muestre la informacion del producto especifico
+mostrarVer(info: Producto) {
+ // 
+ this.modalVisible = true;
+
+ //guarda informacion de un producto elegido por el usuario
+ this.productoSeleccionado = info;
+}
 }
