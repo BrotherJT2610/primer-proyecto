@@ -8,6 +8,7 @@ import { Apartado2Component } from './pages/apartado-2/apartado-2.component';
 import { Apartado3Component } from './pages/apartado-3/apartado-3.component';
 import { CardSouvenirsComponent } from './components/card-souvenirs/card-souvenirs.component';
 import { CardComponent } from './components/card/card.component';
+import { CarruselComponent } from './components/carrusel/carrusel.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CardComponent } from './components/card/card.component';
     Apartado2Component,
     Apartado3Component,
     CardComponent,
-    CardSouvenirsComponent
+    CardSouvenirsComponent,
+    CarruselComponent
     
   ],
   imports: [
@@ -32,7 +34,8 @@ import { CardComponent } from './components/card/card.component';
     Apartado2Component,
     Apartado3Component,
     CardComponent,
-    CardSouvenirsComponent
+    CardSouvenirsComponent,
+    CarruselComponent
   ]
 })
 export class ProductoModule { }
