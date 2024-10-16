@@ -89,7 +89,21 @@ export class InicioSesionComponent {
           icon: "success"
         });
 
-        this.servicioRutas.navigate(['/inicio']);
+        //Almacena el rol del usuario en el servicio de autentificacion
+        this.servicioAuth.enviarRolUsuario(usuarioData.rol)
+
+        if(usuarioData.rol === "admin"){
+          console.log("Inicio de sesion de usuario administrador")
+
+          //si es administrador, redireccionamos a la vista de "admin"
+          this.servicioRutas.navigate(['/admin'])
+
+        }else {
+          console.log("Inicio de sesion de usuario visitante")
+
+          //si es visitante, redireccionamos a la vista de "inicio"
+          this.servicioRutas.navigate(['/inicio'])
+        }
       })
       .catch(err => {
         Swal.fire({

@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InicoComponent } from './modules/inicio/pages/inico/inico.component';
 
+//guardian para la ruta de administrador
+import { rutaProtegidaGuard } from './guards/ruta-protegida.guard';
+
 const routes: Routes = [
   //es una ruta comun que te lleva a un componente
   {path:"",component:InicoComponent},
@@ -15,7 +18,11 @@ const routes: Routes = [
 
   {path:"",loadChildren:()=>import('./modules/autentificacion/autentificacion.module').then(m=>m.AutentificacionModule)},
 
-  {path:"",loadChildren:()=>import('./modules/admin/admin.module').then(m=>m.AdminModule)}
+  {path:"",loadChildren:()=>import('./modules/admin/admin.module').then(m=>m.AdminModule),
+    //especificamos que la ruta de administrador va a ser protegida con un guardian y espera un rol de tipo "admin"
+    canActivate: [rutaProtegidaGuard], data: {role: 'admin'} // solo se activara si el usuario tiene permisos de administrador
+  },
+
 
 ];
 
