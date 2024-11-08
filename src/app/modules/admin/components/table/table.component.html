@@ -179,17 +179,18 @@
 </div>
 
 <!-- MODAL PARA ELIMINAR PRODUCTO -->
-<div class="modal fade" *ngIf="modalVisibleProducto" id="eliminarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="eliminarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
 <div class="modal-dialog">
     <div class="modal-content">
         <!-- ENCABEZADO -->
-        <div class="modal-header">
+        <div class="modal-header" *ngIf="modalVisibleProducto">
             <h1 class="modal-title fs-5" id="exampleModalLabel">¿Está seguro de eliminar el producto?</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <!-- CUERPO DEL MODAL -->
-        <div class="modal-body">
+        <div class="modal-body" *ngIf="modalVisibleProducto">
             <!-- Mostramos al usuario información del producto que quiere eliminar -->
 
             {{productoSeleccionado.nombre}}
