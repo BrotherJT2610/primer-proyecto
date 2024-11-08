@@ -33,7 +33,8 @@ export class TableComponent {
     descripcion: new FormControl('', Validators.required),
     categoria: new FormControl('', Validators.required),
     // imagen: new FormControl('', Validators.required),
-    alt: new FormControl('', Validators.required)
+    alt: new FormControl('', Validators.required),
+    stock: new FormControl(0, Validators.required)
   })
 
   constructor(public servicioCrud: CrudService) { }
@@ -59,7 +60,8 @@ export class TableComponent {
         categoria: this.producto.value.categoria!,
         // imagen ahora toma la URL generada desde Storage
         imagen: '',
-        alt: this.producto.value.alt!
+        alt: this.producto.value.alt!,
+        stock: this.producto.value.stock!
       }
 
       // Enviamos nombre y url de la imagen; definimos carpeta de imágenes como "productos"
@@ -119,7 +121,8 @@ export class TableComponent {
       descripcion: productoSeleccionado.descripcion,
       categoria: productoSeleccionado.categoria,
       // imagen: productoSeleccionado.imagen,
-      alt: productoSeleccionado.alt
+      alt: productoSeleccionado.alt,
+      stock: productoSeleccionado.stock
     })
   }
 
@@ -133,7 +136,8 @@ export class TableComponent {
       categoria: this.producto.value.categoria!,
       /* Imagen toma información desde el servicio, no del formulario */
       imagen: this.productoSeleccionado.imagen,
-      alt: this.producto.value.alt!
+      alt: this.producto.value.alt!,
+      stock:this.producto.value.stock!
     }
 
     // Verificamos que el usuario ingrese una nueva imagen o no

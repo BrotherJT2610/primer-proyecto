@@ -9,7 +9,8 @@ import { Apartado3Component } from './pages/apartado-3/apartado-3.component';
 import { CardSouvenirsComponent } from './components/card-souvenirs/card-souvenirs.component';
 import { CardComponent } from './components/card/card.component';
 import { CarruselComponent } from './components/carrusel/carrusel.component';
-
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { CarruselComponent } from './components/carrusel/carrusel.component';
   imports: [
     CommonModule,
     ProductoRoutingModule,
-    
+    FormsModule,
+    ReactiveFormsModule,
+    MatTabsModule
   ],
 
   exports: [
@@ -35,7 +38,10 @@ import { CarruselComponent } from './components/carrusel/carrusel.component';
     Apartado3Component,
     CardComponent,
     CardSouvenirsComponent,
-    CarruselComponent
+    CarruselComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatTabsModule
   ]
 })
 export class ProductoModule { }
