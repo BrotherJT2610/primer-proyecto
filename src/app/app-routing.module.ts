@@ -18,6 +18,10 @@ const routes: Routes = [
 
   {path:"",loadChildren:()=>import('./modules/autentificacion/autentificacion.module').then(m=>m.AutentificacionModule)},
 
+  {
+    path:"",loadChildren:()=>import('./modules/carrito/carrito.module').then(m=>m.CarritoModule)
+  },
+
   {path:"",loadChildren:()=>import('./modules/admin/admin.module').then(m=>m.AdminModule),
     //especificamos que la ruta de administrador va a ser protegida con un guardian y espera un rol de tipo "admin"
     canActivate: [rutaProtegidaGuard], data: {role: 'admin'} // solo se activara si el usuario tiene permisos de administrador

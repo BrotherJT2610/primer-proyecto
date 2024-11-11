@@ -6,6 +6,7 @@ import { Pedido } from 'src/app/models/pedido';
 import { Producto } from 'src/app/models/producto';
 import { map } from 'rxjs';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -34,9 +35,9 @@ export class CarritoService {
   private uid: string | null = null;
 
   constructor(
-    private servicioCrud:CrudService,
     private servicioAuth:AuthService,
-    private servicioFirestore:AngularFirestore
+    private servicioFirestore:AngularFirestore,
+    public servicioRutas: Router
   ) {
     //Creamos un subcoleccion dentro de la coleccion de usuarios y le damos ese valor a pedidosColeccion
     this.pedidosColeccion = this.servicioFirestore.collection(`usuarios/${this.uid}/pedido`);
@@ -44,13 +45,23 @@ export class CarritoService {
 
   //Funcion para inicializar el carrito
   iniciarCart(){
+    
     this.servicioAuth.obtenerUid().then(uid => {
       //Obtenemos el ID del usuario para la subcoleccion
+
+      
       this.uid = uid
-      if(this.uid){
-        console.log(this.uid);
+
+      //Diferenciacion en base al id del usuario
+      if(this.uid === null){
+
+        console.error('No se obtuvo el UID. Intente iniciar sesion');
+        
+        this.servicioRutas.navigate(['/inicio-sesion']);
       }else{
-        console.error('No se obtuvo el UID');
+        this.pedidosColeccion = this.servicioFirestore.collection(`usuarios/${this.uid}/pedido`);
+
+        console.log(this.uid)
       }
     });
   }
@@ -75,6 +86,23 @@ export class CarritoService {
       Swal.fire({
         title:'¡Oh no!',
         text:'Ha ocurrido un error al subir su producto',
+        icon:'error'
+      })
+    }
+  }
+
+  borrarPedido(pedido:Pedido){
+    try {
+      this.pedidosColeccion.doc(pedido.idPedido).delete();
+
+      Swal.fire({
+        text:'Ha borrado su pedido con exito',
+        icon:'info'
+      })
+      
+    } catch (error) {
+      Swal.fire({
+        text:'Ha ocurrido un error: n/'+error,
         icon:'error'
       })
     }

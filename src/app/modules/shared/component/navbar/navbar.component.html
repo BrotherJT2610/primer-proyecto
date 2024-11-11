@@ -23,16 +23,17 @@
     <button mat-menu-item (click)="iniciar()" *ngIf="logueado" routerLink="/registro">Registrarse</button>
     <button mat-menu-item (click)="iniciar()" *ngIf="logueado" routerLink="/inicio-sesion">Iniciar sesión</button>
     <button mat-menu-item (click)="cerrarSesion()" *ngIf="deslogueado">Cerrar Sesión</button>
-    
+
   </mat-menu>
 
 
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+  <button mat-icon-button routerLink="/carrito" class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon">
     <mat-icon>shopping_cart</mat-icon>
   </button>
 
-       <!--Label Para Modo Oscuro-->
-       <label for="toggle" id="label_toggle"><i class="fa-solid fa-moon"></i></label>
-       <input type="checkbox" id="toggle" (click)="cambiarFondo()">
+  <!--Label Para Modo Oscuro-->
+  <label for="toggle" id="label_toggle"><i class="fa-solid fa-moon"></i></label>
+  <input type="checkbox" id="toggle" (click)="cambiarFondo()">
 
 </mat-toolbar>

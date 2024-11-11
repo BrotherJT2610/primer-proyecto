@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
 //Importamos paqueteria de SweetAlert para alertas personalizadas
 import Swal from 'sweetalert2';
+import { CarritoService } from 'src/app/modules/carrito/services/carrito.service';
+
 @Component({
   selector: 'app-inicio-sesion',
   templateUrl: './inicio-sesion.component.html',
@@ -17,7 +19,8 @@ export class InicioSesionComponent {
   constructor(
     public servicioAuth: AuthService,
     public servicioFirestore: FirestoreService,
-    public servicioRutas: Router
+    public servicioRutas: Router,
+    public servicioCarrito: CarritoService
   ) { }
 
   // ####################################### INGRESADO
@@ -103,6 +106,7 @@ export class InicioSesionComponent {
 
           //si es visitante, redireccionamos a la vista de "inicio"
           this.servicioRutas.navigate(['/inicio'])
+          this.servicioCarrito.iniciarCart();
         }
       })
       .catch(err => {
